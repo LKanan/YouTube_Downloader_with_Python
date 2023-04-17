@@ -3,10 +3,11 @@ import re
 lien= input("Saisissez un lien YouTube valide ")
 # Ex: lien="https://www.youtube.com/watch?v=Hi7Rx3En7-k"
 regex1=re.compile(r'^(https://www.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-]{11}\b')
-regex2=re.compile(r'^(https://m.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-=&]{55}\b')
+regex2=re.compile(r'^(https://m.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-]{11}\b')
+regex3=re.compile(r'^(https://m.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-=&]{55}\b')
 #Niveau de vérification du lien entré par l'utilisateur pour s'assurer que c'est un lien YouTube
 while True:
-    if regex1.search(lien) or regex2.search(lien) :
+    if regex1.search(lien) or regex2.search(lien) or regex3.search(lien) :
         youtube_video= YouTube(lien)
         break 
     else:
