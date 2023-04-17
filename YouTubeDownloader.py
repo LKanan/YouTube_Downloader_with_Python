@@ -1,14 +1,14 @@
 from pytube import YouTube
 import re
 lien= input("Saisissez un lien YouTube valide ")
-verification=True
 # Ex: lien="https://www.youtube.com/watch?v=Hi7Rx3En7-k"
-regex=re.compile(r'^(https://www.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-]{11}\b')
+regex1=re.compile(r'^(https://www.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-]{11}\b')
+regex2=re.compile(r'^(https://m.youtube.com/watch\?v=)\b[A-Za-z0-9._%+-=&]{55}\b')
 #Niveau de vérification du lien entré par l'utilisateur pour s'assurer que c'est un lien YouTube
-while(verification==True):
-    if regex.search(lien):
+while True:
+    if regex1.search(lien) or regex2.search(lien) :
         youtube_video= YouTube(lien)
-        verification=False
+        break 
     else:
         print("=="*100)
         print("( "+lien+" ) n'est pas un lien valide")
